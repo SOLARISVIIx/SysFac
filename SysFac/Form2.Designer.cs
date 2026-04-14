@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             label1 = new Label();
             label3 = new Label();
             comboBox2 = new ComboBox();
@@ -67,12 +68,17 @@
             Precio = new DataGridViewTextBoxColumn();
             Subtotal = new DataGridViewTextBoxColumn();
             Eliminar = new DataGridViewButtonColumn();
+            pictureBox1 = new PictureBox();
+            button5 = new Button();
+            textBox3 = new TextBox();
+            label14 = new Label();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -83,7 +89,7 @@
             label1.FlatStyle = FlatStyle.System;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(633, 19);
+            label1.Location = new Point(633, 17);
             label1.Name = "label1";
             label1.Size = new Size(208, 27);
             label1.TabIndex = 1;
@@ -131,7 +137,7 @@
             label2.FlatStyle = FlatStyle.System;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(128, 19);
+            label2.Location = new Point(130, 17);
             label2.Name = "label2";
             label2.Size = new Size(187, 27);
             label2.TabIndex = 4;
@@ -151,18 +157,20 @@
             // 
             panel1.BackColor = Color.DarkSlateBlue;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(textBox3);
+            panel1.Controls.Add(label14);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(comboBox1);
-            panel1.Location = new Point(10, 49);
+            panel1.Location = new Point(12, 47);
             panel1.Name = "panel1";
-            panel1.Size = new Size(462, 175);
+            panel1.Size = new Size(462, 177);
             panel1.TabIndex = 14;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(225, 91);
+            textBox1.Location = new Point(224, 74);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(202, 31);
             textBox1.TabIndex = 27;
@@ -175,7 +183,7 @@
             label13.FlatStyle = FlatStyle.System;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = SystemColors.ControlLightLight;
-            label13.Location = new Point(20, 89);
+            label13.Location = new Point(19, 72);
             label13.Name = "label13";
             label13.Size = new Size(186, 33);
             label13.TabIndex = 26;
@@ -206,7 +214,7 @@
             panel3.Controls.Add(label11);
             panel3.Controls.Add(button4);
             panel3.Controls.Add(comboBox2);
-            panel3.Location = new Point(505, 49);
+            panel3.Location = new Point(505, 47);
             panel3.Name = "panel3";
             panel3.Size = new Size(462, 177);
             panel3.TabIndex = 15;
@@ -265,9 +273,9 @@
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(comboBox3);
             panel4.Controls.Add(label3);
-            panel4.Location = new Point(10, 613);
+            panel4.Location = new Point(12, 616);
             panel4.Name = "panel4";
-            panel4.Size = new Size(215, 150);
+            panel4.Size = new Size(200, 147);
             panel4.TabIndex = 16;
             // 
             // textBox4
@@ -421,9 +429,9 @@
             panel2.Controls.Add(textBox6);
             panel2.Controls.Add(textBox5);
             panel2.Controls.Add(textBox4);
-            panel2.Location = new Point(10, 230);
+            panel2.Location = new Point(12, 230);
             panel2.Name = "panel2";
-            panel2.Size = new Size(462, 279);
+            panel2.Size = new Size(462, 277);
             panel2.TabIndex = 29;
             // 
             // panel5
@@ -432,17 +440,17 @@
             panel5.BorderStyle = BorderStyle.Fixed3D;
             panel5.Controls.Add(label8);
             panel5.Controls.Add(textBox10);
-            panel5.Location = new Point(10, 528);
+            panel5.Location = new Point(12, 522);
             panel5.Name = "panel5";
-            panel5.Size = new Size(462, 56);
+            panel5.Size = new Size(462, 62);
             panel5.TabIndex = 30;
             // 
             // button1
             // 
             button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(237, 613);
+            button1.Location = new Point(232, 613);
             button1.Name = "button1";
-            button1.Size = new Size(235, 150);
+            button1.Size = new Size(241, 150);
             button1.TabIndex = 31;
             button1.Text = "Limpiar Datos";
             button1.UseVisualStyleBackColor = true;
@@ -451,9 +459,9 @@
             // 
             button2.BackColor = Color.LightCyan;
             button2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(505, 613);
+            button2.Location = new Point(724, 613);
             button2.Name = "button2";
-            button2.Size = new Size(215, 150);
+            button2.Size = new Size(200, 150);
             button2.TabIndex = 32;
             button2.Text = "Generar Proforma";
             button2.UseVisualStyleBackColor = false;
@@ -463,9 +471,9 @@
             button3.BackColor = Color.DarkRed;
             button3.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(738, 613);
+            button3.Location = new Point(944, 613);
             button3.Name = "button3";
-            button3.Size = new Size(229, 150);
+            button3.Size = new Size(376, 150);
             button3.TabIndex = 33;
             button3.Text = "Imprimir Factura";
             button3.UseVisualStyleBackColor = false;
@@ -478,7 +486,7 @@
             dataGridView1.Location = new Point(505, 230);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(462, 354);
+            dataGridView1.Size = new Size(815, 354);
             dataGridView1.TabIndex = 34;
             // 
             // Producto
@@ -516,12 +524,59 @@
             Eliminar.Name = "Eliminar";
             Eliminar.Width = 150;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(973, 17);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(347, 207);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 35;
+            pictureBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.DarkOliveGreen;
+            button5.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button5.ForeColor = SystemColors.ControlLightLight;
+            button5.Location = new Point(505, 613);
+            button5.Name = "button5";
+            button5.Size = new Size(200, 150);
+            button5.TabIndex = 36;
+            button5.Text = "Cerrar Caja";
+            button5.UseVisualStyleBackColor = false;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(224, 122);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(202, 31);
+            textBox3.TabIndex = 29;
+            textBox3.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label14
+            // 
+            label14.BackColor = Color.SteelBlue;
+            label14.BorderStyle = BorderStyle.Fixed3D;
+            label14.FlatStyle = FlatStyle.System;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.ForeColor = SystemColors.ControlLightLight;
+            label14.Location = new Point(19, 120);
+            label14.Name = "label14";
+            label14.Size = new Size(186, 33);
+            label14.TabIndex = 28;
+            label14.Text = "Numero RUC";
+            label14.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
-            ClientSize = new Size(980, 778);
+            ClientSize = new Size(1332, 778);
+            Controls.Add(button5);
+            Controls.Add(pictureBox1);
             Controls.Add(dataGridView1);
             Controls.Add(button3);
             Controls.Add(label2);
@@ -546,6 +601,7 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -590,5 +646,9 @@
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewButtonColumn Eliminar;
+        private PictureBox pictureBox1;
+        private Button button5;
+        private TextBox textBox3;
+        private Label label14;
     }
 }
