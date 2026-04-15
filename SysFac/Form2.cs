@@ -24,9 +24,9 @@ namespace SysFac
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string producto = comboBox2.Text;
-            int cantidad = Convert.ToInt32(textBox2.Text);
-            decimal precioUnitario = Convert.ToDecimal(textBox7.Text);
+            string producto = comboBox2.Text;//donde se selecciona el producto
+            int cantidad = Convert.ToInt32(textBox2.Text);//donde se ingresa la cantidad
+            decimal precioUnitario = Convert.ToDecimal(textBox7.Text);//donde se reflejara el precio unitario del producto seleccionado
 
             decimal subtotal = cantidad * precioUnitario;
 
@@ -44,15 +44,15 @@ namespace SysFac
                 subtotal += Convert.ToDecimal(row.Cells["Subtotal"].Value);
             }
 
-            decimal descuento = string.IsNullOrEmpty(textBox5.Text) ? 0 : Convert.ToDecimal(textBox5.Text);
-            decimal abono = string.IsNullOrEmpty(textBox6.Text) ? 0 : Convert.ToDecimal(textBox6.Text);
+            decimal descuento = string.IsNullOrEmpty(textBox5.Text) ? 0 : Convert.ToDecimal(textBox5.Text);//este es el textbox del descuento
+            decimal abono = string.IsNullOrEmpty(textBox6.Text) ? 0 : Convert.ToDecimal(textBox6.Text);//este es el textbox del abono
             decimal iva = subtotal * 0.15m; // ejemplo IVA 15%
             decimal total = subtotal + iva - descuento - abono;
 
-            textBox4.Text = subtotal.ToString("N2");
-            textBox9.Text = iva.ToString("N2");
-            textBox8.Text = total.ToString("N2");
-            textBox10.Text = total.ToString("N2");
+            textBox4.Text = subtotal.ToString("N2");//este es el textbox del subtotal
+            textBox9.Text = iva.ToString("N2");//este es el textbox del IVA
+            textBox8.Text = total.ToString("N2");//este es el textbox del total antes de aplicar el descuento y el abono
+            textBox10.Text = total.ToString("N2");//este es el textbox del total a pagar después de aplicar el descuento y el abono
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -69,12 +69,12 @@ namespace SysFac
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//este es el boton de generar factura
         {
             MessageBox.Show("Factura generada correctamente.\n\n" +
-                            "Cliente: " + comboBox1.Text + "\n" +
-                            "Método de pago: " + comboBox3.SelectedItem?.ToString() + "\n" +
-                            "Total a pagar: " + textBox10.Text,
+                            "Cliente: " + comboBox1.Text + "\n" +//combobox donde se selecciona el cliente
+                            "Método de pago: " + comboBox3.SelectedItem?.ToString() + "\n" +//combobox donde se selecciona el método de pago
+                            "Total a pagar: " + textBox10.Text,//textbox donde se muestra el total a pagar después de aplicar el descuento y el abono
                             "Factura SysFac");
         }
     }
