@@ -36,6 +36,7 @@
             label2 = new Label();
             comboBox1 = new ComboBox();
             panel1 = new Panel();
+            button6 = new Button();
             textBox3 = new TextBox();
             label14 = new Label();
             textBox1 = new TextBox();
@@ -72,7 +73,6 @@
             Eliminar = new DataGridViewButtonColumn();
             pictureBox1 = new PictureBox();
             button5 = new Button();
-            button6 = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -128,7 +128,7 @@
             comboBox3.Items.AddRange(new object[] { "Efectivo", "Tarjeta" });
             comboBox3.Location = new Point(12, 63);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(182, 33);
+            comboBox3.Size = new Size(196, 33);
             comboBox3.TabIndex = 13;
             // 
             // label2
@@ -170,6 +170,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(462, 233);
             panel1.TabIndex = 14;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.Teal;
+            button6.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button6.ForeColor = SystemColors.Control;
+            button6.Location = new Point(116, 181);
+            button6.Name = "button6";
+            button6.Size = new Size(208, 34);
+            button6.TabIndex = 30;
+            button6.Text = "Agregar Cliente";
+            button6.UseVisualStyleBackColor = false;
             // 
             // textBox3
             // 
@@ -298,9 +310,9 @@
             panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(comboBox3);
             panel4.Controls.Add(label3);
-            panel4.Location = new Point(12, 616);
+            panel4.Location = new Point(12, 613);
             panel4.Name = "panel4";
-            panel4.Size = new Size(200, 147);
+            panel4.Size = new Size(221, 150);
             panel4.TabIndex = 16;
             // 
             // textBox4
@@ -416,7 +428,7 @@
             label8.ForeColor = SystemColors.ControlLightLight;
             label8.Location = new Point(20, 13);
             label8.Name = "label8";
-            label8.Size = new Size(181, 30);
+            label8.Size = new Size(188, 30);
             label8.TabIndex = 28;
             label8.Text = "Total a pagar\r\n";
             label8.TextAlign = ContentAlignment.BottomCenter;
@@ -467,7 +479,7 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(232, 613);
+            button1.Location = new Point(239, 613);
             button1.Name = "button1";
             button1.Size = new Size(241, 150);
             button1.TabIndex = 31;
@@ -565,18 +577,6 @@
             button5.TabIndex = 36;
             button5.Text = "Cerrar Caja";
             button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            button6.BackColor = Color.Teal;
-            button6.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.ForeColor = SystemColors.Control;
-            button6.Location = new Point(116, 181);
-            button6.Name = "button6";
-            button6.Size = new Size(208, 34);
-            button6.TabIndex = 30;
-            button6.Text = "Agregar Cliente";
-            button6.UseVisualStyleBackColor = false;
             // 
             // Form2
             // 
