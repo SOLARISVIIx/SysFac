@@ -70,7 +70,7 @@
             dataGridView1 = new DataGridView();
             Producto = new DataGridViewTextBoxColumn();
             Cantidad = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
+            PrecioUnitario = new DataGridViewTextBoxColumn();
             Subtotal = new DataGridViewTextBoxColumn();
             Stock = new DataGridViewTextBoxColumn();
             Eliminar = new DataGridViewButtonColumn();
@@ -130,7 +130,6 @@
             // 
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] { "Efectivo", "Tarjeta" });
             comboBox3.Location = new Point(12, 63);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(196, 33);
@@ -545,7 +544,7 @@
             // 
             dataGridView1.BackgroundColor = Color.RosyBrown;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Producto, Cantidad, Precio, Subtotal, Stock, Eliminar });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Producto, Cantidad, PrecioUnitario, Subtotal, Stock, Eliminar });
             dataGridView1.Location = new Point(505, 230);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 87;
@@ -568,12 +567,12 @@
             Cantidad.Name = "Cantidad";
             Cantidad.Width = 150;
             // 
-            // Precio
+            // PrecioUnitario
             // 
-            Precio.HeaderText = "Precio unitario";
-            Precio.MinimumWidth = 8;
-            Precio.Name = "Precio";
-            Precio.Width = 150;
+            PrecioUnitario.HeaderText = "PrecioUnitario";
+            PrecioUnitario.MinimumWidth = 8;
+            PrecioUnitario.Name = "PrecioUnitario";
+            PrecioUnitario.Width = 150;
             // 
             // Subtotal
             // 
@@ -728,12 +727,12 @@
         private Label label15;
         private TextBox textBox7;
         private Label label16;
+        private Button button7;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Cantidad;
-        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn PrecioUnitario;
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewButtonColumn Eliminar;
-        private Button button7;
     }
 }
