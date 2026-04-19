@@ -61,6 +61,7 @@
             label7 = new Label();
             label8 = new Label();
             panel2 = new Panel();
+            buttonDescF2 = new Button();
             panel5 = new Panel();
             button1 = new Button();
             button2 = new Button();
@@ -190,6 +191,7 @@
             // 
             textBox3.Location = new Point(224, 122);
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
             textBox3.Size = new Size(202, 31);
             textBox3.TabIndex = 29;
             textBox3.TextAlign = HorizontalAlignment.Center;
@@ -212,6 +214,7 @@
             // 
             textBox1.Location = new Point(224, 74);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(202, 31);
             textBox1.TabIndex = 27;
             textBox1.TextAlign = HorizontalAlignment.Center;
@@ -265,6 +268,7 @@
             // 
             textBox7.Location = new Point(217, 73);
             textBox7.Name = "textBox7";
+            textBox7.ReadOnly = true;
             textBox7.Size = new Size(186, 31);
             textBox7.TabIndex = 30;
             textBox7.TextAlign = HorizontalAlignment.Center;
@@ -345,15 +349,16 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(220, 3);
+            textBox4.Location = new Point(220, 5);
             textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
             textBox4.Size = new Size(208, 31);
             textBox4.TabIndex = 17;
             textBox4.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(220, 50);
+            textBox5.Location = new Point(219, 105);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(208, 31);
             textBox5.TabIndex = 18;
@@ -361,16 +366,18 @@
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(220, 143);
+            textBox8.Location = new Point(220, 155);
             textBox8.Name = "textBox8";
+            textBox8.ReadOnly = true;
             textBox8.Size = new Size(208, 31);
             textBox8.TabIndex = 20;
             textBox8.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(220, 95);
+            textBox9.Location = new Point(220, 55);
             textBox9.Name = "textBox9";
+            textBox9.ReadOnly = true;
             textBox9.Size = new Size(208, 31);
             textBox9.TabIndex = 21;
             textBox9.TextAlign = HorizontalAlignment.Center;
@@ -379,18 +386,19 @@
             // 
             textBox10.Location = new Point(219, 13);
             textBox10.Name = "textBox10";
+            textBox10.ReadOnly = true;
             textBox10.Size = new Size(208, 31);
             textBox10.TabIndex = 22;
             textBox10.TextAlign = HorizontalAlignment.Center;
             // 
             // label4
             // 
-            label4.BackColor = Color.SteelBlue;
+            label4.BackColor = Color.FromArgb(0, 192, 192);
             label4.BorderStyle = BorderStyle.Fixed3D;
             label4.FlatStyle = FlatStyle.System;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(23, 3);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(23, 5);
             label4.Name = "label4";
             label4.Size = new Size(186, 31);
             label4.TabIndex = 23;
@@ -399,12 +407,12 @@
             // 
             // label5
             // 
-            label5.BackColor = Color.SteelBlue;
+            label5.BackColor = Color.Teal;
             label5.BorderStyle = BorderStyle.Fixed3D;
             label5.FlatStyle = FlatStyle.System;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(23, 50);
+            label5.ForeColor = SystemColors.ActiveCaptionText;
+            label5.Location = new Point(23, 105);
             label5.Name = "label5";
             label5.Size = new Size(186, 31);
             label5.TabIndex = 24;
@@ -413,12 +421,12 @@
             // 
             // label6
             // 
-            label6.BackColor = Color.SteelBlue;
+            label6.BackColor = Color.Cyan;
             label6.BorderStyle = BorderStyle.Fixed3D;
             label6.FlatStyle = FlatStyle.System;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(23, 95);
+            label6.ForeColor = SystemColors.ActiveCaptionText;
+            label6.Location = new Point(23, 55);
             label6.Name = "label6";
             label6.Size = new Size(186, 31);
             label6.TabIndex = 26;
@@ -427,12 +435,12 @@
             // 
             // label7
             // 
-            label7.BackColor = Color.SteelBlue;
+            label7.BackColor = Color.FromArgb(192, 255, 255);
             label7.BorderStyle = BorderStyle.Fixed3D;
             label7.FlatStyle = FlatStyle.System;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(21, 143);
+            label7.ForeColor = SystemColors.ActiveCaptionText;
+            label7.Location = new Point(21, 155);
             label7.Name = "label7";
             label7.Size = new Size(188, 31);
             label7.TabIndex = 25;
@@ -457,6 +465,7 @@
             // 
             panel2.BackColor = Color.DarkSlateBlue;
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(buttonDescF2);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label5);
@@ -469,6 +478,19 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(468, 224);
             panel2.TabIndex = 29;
+            // 
+            // buttonDescF2
+            // 
+            buttonDescF2.BackColor = Color.Teal;
+            buttonDescF2.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonDescF2.ForeColor = SystemColors.Control;
+            buttonDescF2.Location = new Point(116, 188);
+            buttonDescF2.Name = "buttonDescF2";
+            buttonDescF2.Size = new Size(208, 34);
+            buttonDescF2.TabIndex = 31;
+            buttonDescF2.Text = "Agregar Descuento";
+            buttonDescF2.UseVisualStyleBackColor = false;
+            buttonDescF2.Click += buttonDescF2_Click;
             // 
             // panel5
             // 
@@ -707,5 +729,6 @@
         private DataGridViewTextBoxColumn Subtotal;
         private DataGridViewTextBoxColumn Stock;
         private DataGridViewButtonColumn Eliminar;
+        private Button buttonDescF2;
     }
 }

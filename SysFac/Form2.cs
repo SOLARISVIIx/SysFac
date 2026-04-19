@@ -322,7 +322,13 @@ namespace SysFac
         {
             dataGridView1.Rows.Clear();
             textBox2.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox8.Clear();
+            textBox9.Clear();
+            textBox10.Clear();
             CalcularTotales();
+
             comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
             comboBox3.SelectedIndex = -1;
@@ -334,6 +340,41 @@ namespace SysFac
             Form3 form3 = new Form3();
             // CAMBIO: Usamos ShowDialog para que el usuario complete el registro antes de volver a facturar
             form3.ShowDialog();
+        }
+
+        private void buttonDescF2_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // 1. Obtener el subtotal actual
+                decimal subtotal = Convert.ToDecimal(textBox4.Text);
+
+                // 2. Obtener el porcentaje de descuento desde textBox5
+                decimal porcentajeDesc = Convert.ToDecimal(textBox5.Text);
+
+                // 3. Calcular el monto del descuento
+                decimal montoDescuento = subtotal * (porcentajeDesc / 100);
+
+                // 4. Base imponible = subtotal - descuento
+                decimal baseImponible = subtotal - montoDescuento;
+
+                // 5. Calcular IVA (ejemplo: 15%)
+                decimal iva = baseImponible * 0.15m;
+
+                // 6. Total = base imponible + IVA
+                decimal total = baseImponible + iva;
+
+                // 7. Actualizar los TextBox correspondientes
+                textBox5.Text = montoDescuento.ToString("0.00");
+                textBox9.Text = iva.ToString("0.00");
+                textBox8.Text = total.ToString("0.00");
+                textBox10.Text = total.ToString("0.00"); // si no hay otros cargos
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Ingrese valores numéricos válidos en el descuento y subtotal.");
+            }
         }
     }
 }
