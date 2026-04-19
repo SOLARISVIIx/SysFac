@@ -34,14 +34,15 @@ namespace SysFac
             comboBox2.SelectedIndexChanged += ComboBox2_SelectedIndexChanged;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 
-            
+
             this.MinimumSize = new System.Drawing.Size(1528, 834);
             this.MaximumSize = new System.Drawing.Size(1528, 834);
             dataGridView1.AllowUserToAddRows = false;
         }
 
         #region Carga de Datos (Combos)
-        private void CargarDatosIniciales()
+        // CAMBIO: Se cambió a 'public' para que Form3 pueda invocar la recarga
+        public void CargarDatosIniciales()
         {
             try
             {
@@ -140,8 +141,7 @@ namespace SysFac
             textBox8.Text = (sub * 1.15m).ToString("N2"); // Total con IVA
 
             decimal desc = LimpiarYParsear(textBox5.Text);
-            decimal abono = LimpiarYParsear(textBox6.Text);
-            textBox10.Text = (sub * 1.15m - desc - abono).ToString("N2");
+            textBox10.Text = (sub * 1.15m - desc).ToString("N2");
         }
         #endregion
 
@@ -207,7 +207,7 @@ namespace SysFac
             {
                 DataTable dt = ObtenerDatosReporte(id);
                 // Usamos float directamente para evitar el error de Unit a float
-                float anchoTicketPuntos = 213.5f; // Aprox 7.5cm
+                float anchoTicketPuntos = 226.77f; // Aprox 7.5cm
                 string ruta = Path.Combine(@"C:\Facturas\", $"Ticket_{id}.pdf");
 
                 Document.Create(container =>
@@ -235,14 +235,16 @@ namespace SysFac
 
                             col.Item().Table(t =>
                             {
-                                t.ColumnsDefinition(cd => {
+                                t.ColumnsDefinition(cd =>
+                                {
                                     cd.RelativeColumn(3);
                                     cd.RelativeColumn(1);
                                     cd.RelativeColumn(1.5f);
                                     cd.RelativeColumn(1.5f);
                                 });
 
-                                t.Header(h => {
+                                t.Header(h =>
+                                {
                                     h.Cell().Text("Producto").Bold();
                                     h.Cell().AlignCenter().Text("Cant").Bold();
                                     h.Cell().AlignRight().Text("Precio").Bold();
@@ -262,7 +264,8 @@ namespace SysFac
 
                             col.Item().AlignRight().Text("I.V.A. Incluido").FontSize(8);
                             // Usamos el total a pagar directamente del label/textbox
-                            col.Item().AlignRight().Text(x => {
+                            col.Item().AlignRight().Text(x =>
+                            {
                                 x.Span("TOTAL: ").Bold().FontSize(12);
                                 x.Span(textBox10.Text).Bold().FontSize(12);
                             });
@@ -325,5 +328,12 @@ namespace SysFac
             comboBox3.SelectedIndex = -1;
         }
         #endregion
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            // CAMBIO: Usamos ShowDialog para que el usuario complete el registro antes de volver a facturar
+            form3.ShowDialog();
+        }
     }
 }

@@ -52,7 +52,6 @@
             panel4 = new Panel();
             textBox4 = new TextBox();
             textBox5 = new TextBox();
-            textBox6 = new TextBox();
             textBox8 = new TextBox();
             textBox9 = new TextBox();
             textBox10 = new TextBox();
@@ -61,7 +60,6 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
             panel2 = new Panel();
             panel5 = new Panel();
             button1 = new Button();
@@ -186,6 +184,7 @@
             button6.TabIndex = 30;
             button6.Text = "Agregar Cliente";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // textBox3
             // 
@@ -329,7 +328,7 @@
             button4.Name = "button4";
             button4.Size = new Size(208, 34);
             button4.TabIndex = 12;
-            button4.Text = "Agregar Producto";
+            button4.Text = "Enlistar Producto";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
@@ -360,17 +359,9 @@
             textBox5.TabIndex = 18;
             textBox5.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(220, 93);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(208, 31);
-            textBox6.TabIndex = 19;
-            textBox6.TextAlign = HorizontalAlignment.Center;
-            // 
             // textBox8
             // 
-            textBox8.Location = new Point(220, 188);
+            textBox8.Location = new Point(220, 143);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(208, 31);
             textBox8.TabIndex = 20;
@@ -378,7 +369,7 @@
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(220, 140);
+            textBox9.Location = new Point(220, 95);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(208, 31);
             textBox9.TabIndex = 21;
@@ -427,7 +418,7 @@
             label6.FlatStyle = FlatStyle.System;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(23, 140);
+            label6.Location = new Point(23, 95);
             label6.Name = "label6";
             label6.Size = new Size(186, 31);
             label6.TabIndex = 26;
@@ -441,7 +432,7 @@
             label7.FlatStyle = FlatStyle.System;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(21, 188);
+            label7.Location = new Point(21, 143);
             label7.Name = "label7";
             label7.Size = new Size(188, 31);
             label7.TabIndex = 25;
@@ -462,32 +453,16 @@
             label8.Text = "Total a pagar\r\n";
             label8.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // label9
-            // 
-            label9.BackColor = Color.SteelBlue;
-            label9.BorderStyle = BorderStyle.Fixed3D;
-            label9.FlatStyle = FlatStyle.System;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ControlLightLight;
-            label9.Location = new Point(23, 93);
-            label9.Name = "label9";
-            label9.Size = new Size(186, 27);
-            label9.TabIndex = 27;
-            label9.Text = "Abono (-)";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.DarkSlateBlue;
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(label9);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(textBox9);
             panel2.Controls.Add(textBox8);
-            panel2.Controls.Add(textBox6);
             panel2.Controls.Add(textBox5);
             panel2.Controls.Add(textBox4);
             panel2.Location = new Point(12, 316);
@@ -696,7 +671,6 @@
         private Panel panel4;
         private TextBox textBox4;
         private TextBox textBox5;
-        private TextBox textBox6;
         private TextBox textBox8;
         private TextBox textBox9;
         private TextBox textBox10;
@@ -705,7 +679,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
         private Panel panel2;
         private Panel panel5;
         private Button button1;
