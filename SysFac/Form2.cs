@@ -34,7 +34,7 @@ namespace SysFac
             comboBox2.SelectedIndexChanged += ComboBox2_SelectedIndexChanged;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 
-            // Configuración de UI
+            
             this.MinimumSize = new System.Drawing.Size(1528, 834);
             this.MaximumSize = new System.Drawing.Size(1528, 834);
             dataGridView1.AllowUserToAddRows = false;
