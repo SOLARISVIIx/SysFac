@@ -1,12 +1,12 @@
 ﻿using System;
-using Microsoft.Data.SqlClient; // La librería moderna
+using Microsoft.Data.SqlClient; 
 using System.Windows.Forms;
 
 namespace SysFac
 {
     public partial class Form3 : Form
     {
-        // Tu cadena de conexión ajustada a (localdb)
+       
         private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SysFac;Integrated Security=True;TrustServerCertificate=True;";
 
         public Form3()
@@ -19,14 +19,14 @@ namespace SysFac
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // 1. Validaciones previas
+            
             if (string.IsNullOrWhiteSpace(textBoxNombreF3.Text))
             {
                 MessageBox.Show("El nombre es obligatorio.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 2. Query de inserción
+            
             string sql = @"INSERT INTO dbo.cliente (nombre, correo, numero_ruc, telefono) 
                            VALUES (@nombre, @correo, @ruc, @tel)";
 
@@ -36,7 +36,7 @@ namespace SysFac
                 {
                     SqlCommand cmd = new SqlCommand(sql, cnn);
 
-                    // 4. Mapeo de parámetros
+                    
                     cmd.Parameters.AddWithValue("@nombre", textBoxNombreF3.Text.Trim());
                     cmd.Parameters.AddWithValue("@correo", textBoxCorreoF3.Text.Trim());
                     cmd.Parameters.AddWithValue("@ruc", mtbRucF3.Text.Trim());
@@ -49,16 +49,16 @@ namespace SysFac
                     {
                         MessageBox.Show("Cliente registrado con éxito en SysFac.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // --- NUEVA LÓGICA DE ACTUALIZACIÓN ---
-                        // Buscamos el formulario de facturación (Form2) si está abierto
+                        
+                        
                         Form2? frmFactura = (Form2?)Application.OpenForms["Form2"];
                         if (frmFactura != null)
                         {
-                            frmFactura.CargarDatosIniciales(); // Recargamos los combos del Form2
+                            frmFactura.CargarDatosIniciales(); 
                         }
 
                         LimpiarCampos();
-                        this.Close(); // Opcional: cerramos para volver directo a la factura
+                        this.Close(); 
                     }
                 }
                 catch (SqlException ex)

@@ -18,17 +18,17 @@ namespace SysFac
 {
     public partial class Form2 : Form
     {
-        // Conexión alineada a tu base de datos SysFac
+        
         private readonly string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SysFac;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public Form2()
         {
             InitializeComponent();
 
-            // Eventos principales
+            
             this.Load += (s, e) => CargarDatosIniciales();
-            button4.Click += button4_Click; // Agregar producto
-            button3.Click += button3_Click; // Guardar Factura e Imprimir
+            button4.Click += button4_Click;
+            button3.Click += button3_Click;
 
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
             comboBox2.SelectedIndexChanged += ComboBox2_SelectedIndexChanged;
@@ -41,7 +41,7 @@ namespace SysFac
         }
 
         #region Carga de Datos (Combos)
-        // CAMBIO: Se cambió a 'public' para que Form3 pueda invocar la recarga
+        
         public void CargarDatosIniciales()
         {
             try
@@ -74,7 +74,7 @@ namespace SysFac
         {
             if (comboBox1.SelectedItem is DataRowView row)
             {
-                // El RUC y Teléfono se tratan como VARCHAR (texto puro)
+               
                 textBox1.Text = row["telefono"]?.ToString() ?? "";
                 textBox3.Text = row["numero_ruc"]?.ToString() ?? "";
             }
@@ -122,7 +122,7 @@ namespace SysFac
 
         private void dataGridView1_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            // Columna 5 es el botón "Eliminar"
+           
             if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
@@ -137,8 +137,8 @@ namespace SysFac
                 if (r.Cells[3].Value != null) sub += Convert.ToDecimal(r.Cells[3].Value);
 
             textBox4.Text = sub.ToString("N2");
-            textBox9.Text = (sub * 0.15m).ToString("N2"); // IVA 15%
-            textBox8.Text = (sub * 1.15m).ToString("N2"); // Total con IVA
+            textBox9.Text = (sub * 0.15m).ToString("N2");
+            textBox8.Text = (sub * 1.15m).ToString("N2"); 
 
             decimal desc = LimpiarYParsear(textBox5.Text);
             textBox10.Text = (sub * 1.15m - desc).ToString("N2");
@@ -169,7 +169,7 @@ namespace SysFac
                 cmd.Parameters.AddWithValue("@total_a_pagar", LimpiarYParsear(textBox10.Text));
                 cmd.Parameters.AddWithValue("@metodo_pago", comboBox3.SelectedValue);
 
-                // Crear el DataTable para el parámetro tipo Tabla (TVP)
+               
                 DataTable det = new DataTable();
                 det.Columns.Add("id_producto", typeof(int));
                 det.Columns.Add("cantidad", typeof(int));
@@ -183,7 +183,7 @@ namespace SysFac
 
                 SqlParameter tvp = cmd.Parameters.AddWithValue("@detalleFactura", det);
                 tvp.SqlDbType = SqlDbType.Structured;
-                tvp.TypeName = "dbo.DetalleFacturaType"; // Asegúrate que este nombre coincida con tu TYPE en SQL
+                tvp.TypeName = "dbo.DetalleFacturaType";
 
                 cmd.ExecuteNonQuery();
                 tran.Commit();
@@ -206,16 +206,15 @@ namespace SysFac
             try
             {
                 DataTable dt = ObtenerDatosReporte(id);
-                // Usamos float directamente para evitar el error de Unit a float
-                float anchoTicketPuntos = 226.77f; // Aprox 7.5cm
+                
+                float anchoTicketPuntos = 226.77f;
                 string ruta = Path.Combine(@"C:\Facturas\", $"Ticket_{id}.pdf");
 
                 Document.Create(container =>
                 {
                     container.Page(page =>
                     {
-                        // CORRECCIÓN: Usamos el constructor de PageSize directamente
-                        page.Size(new PageSize(anchoTicketPuntos, 842f)); // Altura inicial estandar, se ajustará
+                        page.Size(new PageSize(anchoTicketPuntos, 842f)); 
                         page.Margin(10);
                         page.PageColor(Colors.White);
                         page.DefaultTextStyle(x => x.FontSize(9).FontColor(Colors.Black).FontFamily(Fonts.Verdana));
@@ -226,7 +225,6 @@ namespace SysFac
                             col.Item().Text("SYSFAC S.A.").FontSize(11).Bold().AlignCenter();
                             col.Item().PaddingBottom(5).LineHorizontal(1).LineColor(Colors.Black);
 
-                            // INFO CLIENTE: Usamos el texto directo de los controles sin "LimpiarYParsear"
                             col.Item().AlignCenter().Text(x => { x.Span("Cliente: ").Bold(); x.Span(comboBox1.Text); });
                             col.Item().AlignCenter().Text(x => { x.Span("Tel: ").Bold(); x.Span(textBox1.Text); });
                             col.Item().AlignCenter().Text(x => { x.Span("RUC: ").Bold(); x.Span(textBox3.Text); });
@@ -263,7 +261,6 @@ namespace SysFac
                             col.Item().PaddingVertical(5).LineHorizontal(1).LineColor(Colors.Black);
 
                             col.Item().AlignRight().Text("I.V.A. Incluido").FontSize(8);
-                            // Usamos el total a pagar directamente del label/textbox
                             col.Item().AlignRight().Text(x =>
                             {
                                 x.Span("TOTAL: ").Bold().FontSize(12);
@@ -338,7 +335,7 @@ namespace SysFac
         private void button6_Click(object sender, EventArgs e)
         {
             Form3 form3 = new Form3();
-            // CAMBIO: Usamos ShowDialog para que el usuario complete el registro antes de volver a facturar
+            //Usamos ShowDialog para que el usuario complete el registro antes de volver a facturar
             form3.ShowDialog();
         }
 
@@ -347,29 +344,29 @@ namespace SysFac
 
             try
             {
-                // 1. Obtener el subtotal actual
+                //Obtener el subtotal actual
                 decimal subtotal = Convert.ToDecimal(textBox4.Text);
 
-                // 2. Obtener el porcentaje de descuento desde textBox5
+                //porcentaje de descuento desde textBox5
                 decimal porcentajeDesc = Convert.ToDecimal(textBox5.Text);
 
-                // 3. Calcular el monto del descuento
+                //Calcular el monto del descuento
                 decimal montoDescuento = subtotal * (porcentajeDesc / 100);
 
-                // 4. Base imponible = subtotal - descuento
+                //Base imponible = subtotal - descuento
                 decimal baseImponible = subtotal - montoDescuento;
 
-                // 5. Calcular IVA (ejemplo: 15%)
+                //Calculo del iva (15% sobre la base imponible)
                 decimal iva = baseImponible * 0.15m;
 
-                // 6. Total = base imponible + IVA
+                //Total = base imponible + IVA
                 decimal total = baseImponible + iva;
 
-                // 7. Actualizar los TextBox correspondientes
+                //Actualizar los TextBox correspondientes
                 textBox5.Text = montoDescuento.ToString("0.00");
                 textBox9.Text = iva.ToString("0.00");
                 textBox8.Text = total.ToString("0.00");
-                textBox10.Text = total.ToString("0.00"); // si no hay otros cargos
+                textBox10.Text = total.ToString("0.00");
             }
             catch (FormatException)
             {
@@ -397,10 +394,10 @@ namespace SysFac
                 if (!r.IsNewRow)
                 {
                     det.Rows.Add(
-                        r.Cells[0].Value?.ToString() ?? "S/N",   // Producto
-                        Convert.ToInt32(r.Cells[1].Value ?? 0), // Cantidad
-                        Convert.ToDecimal(r.Cells[2].Value ?? 0), // Precio unitario
-                        Convert.ToDecimal(r.Cells[3].Value ?? 0)  // Subtotal
+                        r.Cells[0].Value?.ToString() ?? "S/N",   // Celda Producto
+                        Convert.ToInt32(r.Cells[1].Value ?? 0), // Celda Cantidad
+                        Convert.ToDecimal(r.Cells[2].Value ?? 0), // Celda Precio unitario
+                        Convert.ToDecimal(r.Cells[3].Value ?? 0)  // Celda Subtotal
                     );
                 }
             }
