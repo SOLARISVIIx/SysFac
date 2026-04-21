@@ -376,5 +376,45 @@ namespace SysFac
                 MessageBox.Show("Ingrese valores numéricos válidos en el descuento y subtotal.");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //boton para eliminar todos los datos que se muestran en los textbox y datagridview
+            LimpiarFormulario();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable det = new DataTable();
+            det.Columns.Add("producto", typeof(string));
+            det.Columns.Add("cantidad", typeof(int));
+            det.Columns.Add("precio_unitario", typeof(decimal));
+            det.Columns.Add("subtotal", typeof(decimal));
+
+            foreach (DataGridViewRow r in dataGridView1.Rows)
+            {
+                if (!r.IsNewRow)
+                {
+                    det.Rows.Add(
+                        r.Cells[0].Value?.ToString() ?? "S/N",   // Producto
+                        Convert.ToInt32(r.Cells[1].Value ?? 0), // Cantidad
+                        Convert.ToDecimal(r.Cells[2].Value ?? 0), // Precio unitario
+                        Convert.ToDecimal(r.Cells[3].Value ?? 0)  // Subtotal
+                    );
+                }
+            }
+
+            Proforma.GenerarProformaPDF(
+                det,
+                comboBox1.Text,
+                textBox1.Text,
+                textBox3.Text,
+                textBox10.Text
+            );
+
+            LimpiarFormulario();
+            MessageBox.Show("Proforma generada correctamente.");
+        }
     }
 }
