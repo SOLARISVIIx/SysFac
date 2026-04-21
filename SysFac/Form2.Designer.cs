@@ -449,17 +449,16 @@
             // 
             // label8
             // 
-            label8.BackColor = Color.SteelBlue;
+            label8.BackColor = Color.MediumVioletRed;
             label8.BorderStyle = BorderStyle.Fixed3D;
-            label8.FlatStyle = FlatStyle.System;
-            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(20, 13);
+            label8.Location = new Point(20, 10);
             label8.Name = "label8";
-            label8.Size = new Size(188, 30);
+            label8.Size = new Size(188, 40);
             label8.TabIndex = 28;
             label8.Text = "Total a pagar\r\n";
-            label8.TextAlign = ContentAlignment.BottomCenter;
+            label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -494,7 +493,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.DeepSkyBlue;
+            panel5.BackColor = Color.BlueViolet;
             panel5.BorderStyle = BorderStyle.Fixed3D;
             panel5.Controls.Add(label8);
             panel5.Controls.Add(textBox10);

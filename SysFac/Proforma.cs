@@ -8,15 +8,15 @@ using QuestPDF.Infrastructure;
 
 namespace SysFac
 {
-    internal class Proforma
+    internal class Proforma // Clase para generar proformas en PDF usando QuestPDF
     {
         public static void GenerarProformaPDF(DataTable det, string cliente, string telefono, string ruc, string total)
         {
             try
             {
-                float anchoTicketPuntos = 226.77f; // Aprox 7.5cm
+                float anchoTicketPuntos = 226.77f; // da el tamano de la proforma en puntos 8 cm aprox
 
-                // Crear carpeta si no existe
+                // Crea la carpeta "Proformas" si no existe.
                 string carpeta = @"C:\Proformas\";
                 if (!Directory.Exists(carpeta))
                     Directory.CreateDirectory(carpeta);
