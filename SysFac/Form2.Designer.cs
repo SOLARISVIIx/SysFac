@@ -615,6 +615,7 @@
             button5.TabIndex = 36;
             button5.Text = "Cerrar Caja";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label15
             // 
@@ -642,6 +643,7 @@
             button7.TabIndex = 38;
             button7.Text = "Inventario";
             button7.UseVisualStyleBackColor = false;
+            button7.Click += button7_Click;
             // 
             // Form2
             // 

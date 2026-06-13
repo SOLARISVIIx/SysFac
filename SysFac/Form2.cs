@@ -18,14 +18,14 @@ namespace SysFac
 {
     public partial class Form2 : Form
     {
-        
+
         private readonly string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SysFac;Trusted_Connection=True;TrustServerCertificate=True;";
 
         public Form2()
         {
             InitializeComponent();
 
-            
+
             this.Load += (s, e) => CargarDatosIniciales();
             button4.Click += button4_Click;
             button3.Click += button3_Click;
@@ -41,7 +41,7 @@ namespace SysFac
         }
 
         #region Carga de Datos (Combos)
-        
+
         public void CargarDatosIniciales()
         {
             try
@@ -74,7 +74,7 @@ namespace SysFac
         {
             if (comboBox1.SelectedItem is DataRowView row)
             {
-               
+
                 textBox1.Text = row["telefono"]?.ToString() ?? "";
                 textBox3.Text = row["numero_ruc"]?.ToString() ?? "";
             }
@@ -122,7 +122,7 @@ namespace SysFac
 
         private void dataGridView1_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-           
+
             if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
@@ -138,7 +138,7 @@ namespace SysFac
 
             textBox4.Text = sub.ToString("N2");
             textBox9.Text = (sub * 0.15m).ToString("N2");
-            textBox8.Text = (sub * 1.15m).ToString("N2"); 
+            textBox8.Text = (sub * 1.15m).ToString("N2");
 
             decimal desc = LimpiarYParsear(textBox5.Text);
             textBox10.Text = (sub * 1.15m - desc).ToString("N2");
@@ -169,7 +169,7 @@ namespace SysFac
                 cmd.Parameters.AddWithValue("@total_a_pagar", LimpiarYParsear(textBox10.Text));
                 cmd.Parameters.AddWithValue("@metodo_pago", comboBox3.SelectedValue);
 
-               
+
                 DataTable det = new DataTable();
                 det.Columns.Add("id_producto", typeof(int));
                 det.Columns.Add("cantidad", typeof(int));
@@ -206,7 +206,7 @@ namespace SysFac
             try
             {
                 DataTable dt = ObtenerDatosReporte(id);
-                
+
                 float anchoTicketPuntos = 226.77f;
                 string ruta = Path.Combine(@"C:\Facturas\", $"Ticket_{id}.pdf");
 
@@ -214,7 +214,7 @@ namespace SysFac
                 {
                     container.Page(page =>
                     {
-                        page.Size(new PageSize(anchoTicketPuntos, 842f)); 
+                        page.Size(new PageSize(anchoTicketPuntos, 842f));
                         page.Margin(10);
                         page.PageColor(Colors.White);
                         page.DefaultTextStyle(x => x.FontSize(9).FontColor(Colors.Black).FontFamily(Fonts.Verdana));
@@ -412,6 +412,29 @@ namespace SysFac
 
             LimpiarFormulario();
             MessageBox.Show("Proforma generada correctamente.");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Arqueo arqueo = new Arqueo();
+
+            arqueo.Owner = this;
+
+            arqueo.Show();
+
+            this.Hide();
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Inventario inventario = new Inventario();
+
+            inventario.Owner = this;
+
+            inventario.Show();
+
+            this.Hide();
         }
     }
 }
