@@ -509,7 +509,7 @@
             button1.Name = "button1";
             button1.Size = new Size(241, 150);
             button1.TabIndex = 31;
-            button1.Text = "Limpiar Datos";
+            button1.Text = "F5 - Actualizar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -534,9 +534,10 @@
             button3.Name = "button3";
             button3.Size = new Size(356, 150);
             button3.TabIndex = 33;
-            button3.Text = "Imprimir Factura";
+            button3.Text = "F2 - Imprimir Factura";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            button3.KeyDown += Form2_KeyDown;
             // 
             // dataGridView1
             // 
@@ -613,7 +614,7 @@
             button5.Name = "button5";
             button5.Size = new Size(214, 150);
             button5.TabIndex = 36;
-            button5.Text = "Cerrar Caja";
+            button5.Text = "ESC - Cerrar Caja";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -666,8 +667,10 @@
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel1);
+            KeyPreview = true;
             Name = "Form2";
             Text = "Facturas";
+            KeyDown += Form2_KeyDown;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);

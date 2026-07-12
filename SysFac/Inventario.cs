@@ -15,6 +15,8 @@ namespace SysFac
             InitializeComponent();
 
             this.Load += Inventario_Load;
+            this.MinimumSize = new System.Drawing.Size(699, 756);
+            this.MaximumSize = new System.Drawing.Size(699, 756);
         }
 
         private void Inventario_Load(object sender, EventArgs e)

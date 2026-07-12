@@ -201,6 +201,28 @@ namespace SysFac
             }
         }
 
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    button3.PerformClick();
+                    e.Handled = true;
+                    break;
+
+                case Keys.F5:
+                    button1.PerformClick();
+                    e.Handled = true;
+                    break;
+
+                case Keys.Escape:
+                    // Esc dispara el botón de Cerrar Sesión de forma limpia
+                    button5.PerformClick();
+                    e.Handled = true;
+                    break;
+            }
+        }
+
         private void GenerarFacturaPDF(int id)
         {
             try

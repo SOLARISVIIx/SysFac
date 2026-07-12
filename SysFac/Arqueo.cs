@@ -15,6 +15,8 @@ namespace SysFac
             InitializeComponent();
 
             this.Load += Arqueo_Load;
+            this.MinimumSize = new System.Drawing.Size(1068, 848);
+            this.MaximumSize = new System.Drawing.Size(1068, 848);
         }
 
         private void Arqueo_Load(object sender, EventArgs e)

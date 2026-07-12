@@ -62,9 +62,10 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.Silver;
+            label1.BackColor = Color.MediumPurple;
             label1.BorderStyle = BorderStyle.Fixed3D;
             label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(12, 10);
             label1.Name = "label1";
             label1.Size = new Size(621, 38);
@@ -95,7 +96,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.DimGray;
+            label2.BackColor = Color.SlateBlue;
             label2.BorderStyle = BorderStyle.Fixed3D;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
@@ -129,6 +130,7 @@
             // 
             buttonSalir.BackColor = Color.IndianRed;
             buttonSalir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonSalir.ForeColor = SystemColors.ButtonHighlight;
             buttonSalir.Location = new Point(440, 218);
             buttonSalir.Name = "buttonSalir";
             buttonSalir.Size = new Size(176, 34);
@@ -181,7 +183,7 @@
             // 
             // label6
             // 
-            label6.BackColor = Color.LightSlateGray;
+            label6.BackColor = Color.MediumPurple;
             label6.BorderStyle = BorderStyle.Fixed3D;
             label6.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ButtonHighlight;
@@ -193,7 +195,7 @@
             // 
             // label5
             // 
-            label5.BackColor = Color.LightSlateGray;
+            label5.BackColor = Color.MediumPurple;
             label5.BorderStyle = BorderStyle.Fixed3D;
             label5.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             label5.ForeColor = SystemColors.ButtonHighlight;
@@ -205,7 +207,7 @@
             // 
             // label4
             // 
-            label4.BackColor = Color.LightSlateGray;
+            label4.BackColor = Color.MediumPurple;
             label4.BorderStyle = BorderStyle.Fixed3D;
             label4.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             label4.ForeColor = SystemColors.ButtonHighlight;
@@ -217,7 +219,7 @@
             // 
             // label3
             // 
-            label3.BackColor = Color.DimGray;
+            label3.BackColor = Color.SlateBlue;
             label3.BorderStyle = BorderStyle.Fixed3D;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.ButtonHighlight;
@@ -232,7 +234,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.DarkSlateBlue;
             ClientSize = new Size(677, 700);
             Controls.Add(panel3);
             Controls.Add(panel2);
