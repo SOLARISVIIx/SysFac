@@ -7,6 +7,8 @@ namespace SysFac
         public loginForm()
         {
             InitializeComponent();
+            this.MinimumSize = new System.Drawing.Size(837, 510);
+            this.MaximumSize = new System.Drawing.Size(837, 510);
         }
 
         private void label4_Click(object sender, EventArgs e)
