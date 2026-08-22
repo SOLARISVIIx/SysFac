@@ -1,6 +1,6 @@
 ﻿namespace SysFac
 {
-    partial class Form3
+    partial class NuevoCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevoCliente));
             textBoxNombreF3 = new TextBox();
             textBoxCorreoF3 = new TextBox();
             mtbRucF3 = new MaskedTextBox();

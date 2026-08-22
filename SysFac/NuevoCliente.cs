@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace SysFac
 {
-    public partial class Form3 : Form
+    public partial class NuevoCliente : Form
     {
        
         private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SysFac;Integrated Security=True;TrustServerCertificate=True;";
 
-        public Form3()
+        public NuevoCliente()
         {
             InitializeComponent();
 
@@ -51,7 +51,7 @@ namespace SysFac
 
                         
                         
-                        Form2? frmFactura = (Form2?)Application.OpenForms["Form2"];
+                        FacturacionSYSFAC? frmFactura = (FacturacionSYSFAC?)Application.OpenForms["Form2"];
                         if (frmFactura != null)
                         {
                             frmFactura.CargarDatosIniciales(); 

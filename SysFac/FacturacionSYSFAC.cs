@@ -16,12 +16,12 @@ using System.Windows.Forms;
 
 namespace SysFac
 {
-    public partial class Form2 : Form
+    public partial class FacturacionSYSFAC : Form
     {
 
         private readonly string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SysFac;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        public Form2()
+        public FacturacionSYSFAC()
         {
             InitializeComponent();
 
@@ -356,7 +356,7 @@ namespace SysFac
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
+            NuevoCliente form3 = new NuevoCliente();
             //Usamos ShowDialog para que el usuario complete el registro antes de volver a facturar
             form3.ShowDialog();
         }

@@ -1,6 +1,6 @@
 ﻿namespace SysFac
 {
-    partial class Form2
+    partial class FacturacionSYSFAC
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturacionSYSFAC));
             label1 = new Label();
             label3 = new Label();
             comboBox2 = new ComboBox();
