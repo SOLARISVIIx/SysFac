@@ -111,7 +111,7 @@ namespace SysFac
 
                 dr.Close();
 
-                // MÉTODOS DE PAGO
+                // MÉTODOS DE PAGO (Filtrados por caja)
                 decimal efectivo = 0;
                 decimal tarjeta = 0;
                 decimal transferencia = 0;
@@ -119,15 +119,19 @@ namespace SysFac
                 string sqlPagos = @"
                 SELECT
                     mp.nombre,
-                    SUM(p.monto) AS Total
+                    ISNULL(SUM(p.monto), 0) AS Total
                 FROM pago p
                 INNER JOIN metodo_pago mp
                     ON mp.id_metodo = p.id_metodo
-                WHERE p.fecha BETWEEN @inicio AND @fin
+                INNER JOIN factura f
+                    ON f.id_factura = p.id_factura
+                WHERE f.id_caja = @caja
+                AND p.fecha BETWEEN @inicio AND @fin
                 GROUP BY mp.nombre";
 
                 SqlCommand cmdPagos = new SqlCommand(sqlPagos, cn);
 
+                cmdPagos.Parameters.AddWithValue("@caja", idCaja);
                 cmdPagos.Parameters.AddWithValue("@inicio", inicio);
                 cmdPagos.Parameters.AddWithValue("@fin", fin);
 
@@ -136,17 +140,13 @@ namespace SysFac
                 while (drPagos.Read())
                 {
                     string metodo = drPagos["nombre"].ToString();
+                    decimal total = Convert.ToDecimal(drPagos["Total"]);
 
-                    decimal total =
-                        Convert.ToDecimal(drPagos["Total"]);
-
-                    if (metodo == "Efectivo")
+                    if (metodo.Equals("Efectivo", StringComparison.OrdinalIgnoreCase))
                         efectivo = total;
-
-                    else if (metodo == "Tarjeta")
+                    else if (metodo.Equals("Tarjeta", StringComparison.OrdinalIgnoreCase))
                         tarjeta = total;
-
-                    else if (metodo == "Transferencia")
+                    else if (metodo.Equals("Transferencia", StringComparison.OrdinalIgnoreCase))
                         transferencia = total;
                 }
 
@@ -184,32 +184,7 @@ namespace SysFac
 
                 dataGridViewMovimientos.DataSource = dt;
 
-                // SALDO ESPERADO
-                string sqlSaldo = @"
-                SELECT
-                ISNULL(
-                    SUM(
-                        CASE
-                            WHEN tipo='INGRESO'
-                            THEN monto
-                            ELSE -monto
-                        END
-                    ),0)
-                FROM movimiento_caja
-                WHERE id_caja=@caja
-                AND fecha BETWEEN @inicio AND @fin";
-
-                SqlCommand cmdSaldo = new SqlCommand(sqlSaldo, cn);
-
-                cmdSaldo.Parameters.AddWithValue("@caja", idCaja);
-                cmdSaldo.Parameters.AddWithValue("@inicio", inicio);
-                cmdSaldo.Parameters.AddWithValue("@fin", fin);
-
-                decimal saldoEsperado =
-                    Convert.ToDecimal(cmdSaldo.ExecuteScalar());
-
-                textBoxMontoEsperado.Text =
-                    saldoEsperado.ToString("N2");
+                textBoxMontoEsperado.Text = efectivo.ToString("N2");
             }
 
             CalcularDiferencia();
@@ -235,7 +210,7 @@ namespace SysFac
 
             if (diferencia == 0)
             {
-                textBoxResultado.Text = "ARQUEO CORRECTO";
+                textBoxResultado.Text = "CUADRADO";
             }
             else if (diferencia > 0)
             {
@@ -246,8 +221,6 @@ namespace SysFac
                 textBoxResultado.Text = "FALTANTE";
             }
         }
-
-
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {

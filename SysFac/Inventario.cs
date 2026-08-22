@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -130,6 +131,14 @@ namespace SysFac
                     "Inventario",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+
+                // --- RECARGA DEL COMBOBOX EN EL FORMULARIO PRINCIPAL ---
+                FacturacionSYSFAC? frmFactura = Application.OpenForms.OfType<FacturacionSYSFAC>().FirstOrDefault();
+                if (frmFactura != null)
+                {
+                    // Llama al método que carga datos iniciales/productos en tu formulario principal
+                    frmFactura.CargarDatosIniciales();
+                }
 
                 LimpiarCampos();
 
